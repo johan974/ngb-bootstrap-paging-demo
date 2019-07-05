@@ -1,0 +1,20 @@
+body {
+  padding-top: 60px;
+}
+.margintopbottom {
+  margin-top: 10px;
+}
+.margintopleft {
+  margin-top: 10px;
+  margin-left: 7px;
+}
+.editbuttons {
+  margin-top: 10px;
+  padding-left: 5px;
+}
+.btn-space {
+  margin-right: 5px;
+}
+.btn-space-half {
+  margin-right: 3px;
+}

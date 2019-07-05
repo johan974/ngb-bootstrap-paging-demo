@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3 font-weight-bold">Id</div>
+        <div class="col-8 ml-2">{{aanlevering.aanleveringId}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Groep</div>
+        <div class="col-8 ml-2">{{aanlevering.group}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Naam</div>
+        <div class="col-8 ml-2">{{aanlevering.naam}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Peildatum</div>
+        <div class="col-8 ml-2">{{aanlevering.startTijd}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Eindstatus</div>
+        <div class="col-8 ml-2">{{aanlevering.overallstatus}}</div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Maken levering</div>
+        <div class="col-8 ml-2">{{aanlevering.status}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Start</div>
+        <div class="col-8 ml-2">{{aanlevering.startTijd}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Einde</div>
+        <div class="col-8 ml-2">{{aanlevering.eindTijd}}</div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Opsturen PDOK status</div>
+        <div class="col-8 ml-2">{{aanlevering.pdokLeveringStatus}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Opsturen PDOK start</div>
+        <div class="col-8 ml-2">{{aanlevering.pdokLeveringStartTijd}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Opsturen PDOK einde</div>
+        <div class="col-8 ml-2">{{aanlevering.pdokLeveringEindTijd}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">PDOK id</div>
+        <div class="col-8 ml-2">{{aanlevering.pdokLeveringId}}</div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">PDOK verwerking status</div>
+        <div class="col-8 ml-2">{{aanlevering.pdokVerwerkingStatus}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">PDOK verwerking start</div>
+        <div class="col-8 ml-2">{{aanlevering.pdokVerwerkingStartTijd}}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold">PDOK verwerking einde</div>
+        <div class="col-8 ml-2">{{aanlevering.pdokVerwerkingEindTijd}}</div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Consistentie Telling</div>
+        <div class="col-8 ml-2">{{aanlevering.aantal}}</div>
+    </div>
+</div>
+<p *ngIf="errorMessage.length > 0">{{errorMessage}}</p>
+<button type="button" class="btn btn-space btn-info ml-2"
+        (click)="goBack()">Terug
+</button>
+

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nl.kadaster.dkk</groupId>
+    <artifactId>dkkbeheerapp</artifactId>
+    <version>1.2.2-SNAPSHOT</version>
+    <name>dkkbeheerapp</name>
+    <packaging>jar</packaging>
+
+    <description>Kadaster DKK beheerapp</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.2.RELEASE</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <gaa.version>2.0.13</gaa.version>
+        <spring-security.version>5.1.3.RELEASE</spring-security.version>
+        <skip.unit.tests>false</skip.unit.tests>
+        <itCoverageAgent />
+        <maven.exec.skip>false</maven.exec.skip>
+        <angular.npminstall.skip>false</angular.npminstall.skip>
+        <sonar.host.url>http://ota-portal.so.kadaster.nl/sonar</sonar.host.url>
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.exclusions>src/main/resources/static,**/model/**,**/json/**,**/generated/**</sonar.exclusions>
+        <jacoco.append>true</jacoco.append>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>all-tests</id>
+            <properties>
+                <skip.unit.tests>false</skip.unit.tests>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.postgresql</groupId>-->
+<!--            <artifactId>postgresql</artifactId>-->
+<!--            <version>42.2.5</version>-->
+<!--        </dependency>-->
+
+        <!-- LOGGING -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+        <!-- Security and GAA -->
+        <!--    <dependency>-->
+        <!--       <groupId>org.springframework.boot</groupId>-->
+        <!--       <artifactId>spring-boot-starter-security</artifactId>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--        <groupId>nl.kadaster.gaa</groupId>-->
+        <!--        <artifactId>gaa-identity-propagation-spring</artifactId>-->
+        <!--        <version>${gaa.version}</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--        <groupId>org.springframework.security</groupId>-->
+        <!--        <artifactId>spring-security-web</artifactId>-->
+        <!--        <version>${spring-security.version}</version>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--        <groupId>org.springframework.security</groupId>-->
+        <!--        <artifactId>spring-security-config</artifactId>-->
+        <!--        <version>${spring-security.version}</version>-->
+        <!--    </dependency>-->
+
+        <!-- JSON parser -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.11</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.6</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>dkkbeheerapp</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip> <!-- we push the container image to the local registry instead -->
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/webapp/</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <!-- Build Angular -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+<!--                    <execution>-->
+<!--                        <id>npm install 1 clean workspace</id>-->
+<!--                        <goals>-->
+<!--                            <goal>exec</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>initialize</phase>-->
+<!--                        <configuration>-->
+<!--                            <skip>${maven.exec.skip}</skip>-->
+<!--                            <executable>rm</executable>-->
+<!--                            <arguments>-->
+<!--                                <argument>-rf</argument>-->
+<!--                                <argument>node_modules</argument>-->
+<!--                                <argument>package-lock.json</argument>-->
+<!--                            </arguments>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+
+<!--                    <execution>-->
+<!--                        <id>npm install 2 npm install</id>-->
+<!--                        <goals>-->
+<!--                            <goal>exec</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>initialize</phase>-->
+<!--                        <configuration>-->
+<!--                            <skip>${angular.npminstall.skip}</skip>-->
+<!--                            <executable>npm</executable>-->
+<!--                            <arguments>-->
+<!--                                <argument>install</argument>-->
+<!--                            </arguments>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+                    <execution>
+                        <id>build Angular code</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>build</argument>
+                                <!--                <argument>&#45;&#45;</argument>-->
+                                <argument>--dev</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- release management -->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-deploy-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <skip>true</skip> &lt;!&ndash;  we push the image instead  &ndash;&gt;-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>external.atlassian.jgitflow</groupId>-->
+<!--                <artifactId>jgitflow-maven-plugin</artifactId>-->
+<!--                &lt;!&ndash; ERROR: string index out of bound: -6 ... don't use this version: <version>1.0-m5.1</version>&ndash;&gt;-->
+<!--                <version>1.0-m4.3</version>-->
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>com.jcraft</groupId>-->
+<!--                        <artifactId>jsch</artifactId>-->
+<!--                        <version>0.1.54</version>-->
+<!--                    </dependency>-->
+<!--                </dependencies>-->
+<!--                <configuration>-->
+<!--                    <flowInitContext>-->
+<!--                        <developBranchName>development</developBranchName>-->
+<!--                    </flowInitContext>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+
+
+</project>
+
+

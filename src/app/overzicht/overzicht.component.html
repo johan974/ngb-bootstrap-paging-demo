@@ -1,0 +1,33 @@
+<div id="myspinner" class="spinner-border text-warning " [style.display]="isLoading()"></div>
+<div class="row m-2">
+    <table class="table table-bordered">
+        <thead>
+        <tr class="d-flex">
+            <th class="col-1 py-1">Groep</th>
+            <th class="col-2 py-1">Naam</th>
+            <th class="col-3 py-1">Peildatum</th>
+            <th class="col-2 py-1">Status</th>
+            <th class="col-4 py-1">Start</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="d-flex" *ngFor="let aanlevering of aanleveringenPage.aanleveringen"
+            [routerLink]="['/aanlevering-edit', aanlevering.aanleveringId]">
+            <td class="col-1 py-1">{{ aanlevering.group }}</td>
+            <td class="col-2 py-1">{{ aanlevering.naam | slice:0:12 }}</td>
+            <td class="col-3 py-1">{{ aanlevering.startTijd }}</td>
+            <td class="col-2 py-1">{{ aanlevering.overallstatus }}</td>
+            <td class="col-4 py-1">{{ aanlevering.startTijd }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row m-2">
+    <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemsPerPage"
+                    [(page)]="currentPage"
+                    [maxSize]="maxNumberOfPagesInPaging" (pageChange)="loadPage2($event)" [size]="buttonSize"
+                    [directionLinks]="true" [boundaryLinks]="true" [ellipses]="false"></ngb-pagination>
+</div>
+<p class="m-2" *ngIf="errorMessage.length > 0">{{errorMessage}}</p>
+
+
