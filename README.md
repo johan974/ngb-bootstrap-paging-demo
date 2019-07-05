@@ -1,3 +1,6 @@
-# Beheerapp
+# Demo - angular as Spring Boot app with list and ng-bootstrap pager
 
-Beheer applicatie voor de DKK
+Angular 6
+Bootstrap 4
+Spring Boot 2
+Maven 3
